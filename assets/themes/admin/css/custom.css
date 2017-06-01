@@ -1,0 +1,123 @@
+body * {
+    font-family: sans-serif;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    vertical-align: middle
+}
+
+.dataTable-admin .fa-status.fa-ban {
+    color: red;
+}
+
+.dataTable-admin .fa-status.fa-check-circle-o, .detail-user .fa-status.fa-check-circle-o {
+    color: #00CC00;
+}
+
+.dataTable-admin .avatar {
+    margin-right: 5px;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.member-cog {
+    color: #1a1a1a;
+    margin: 0 2px;
+}
+
+#admin-cog-action::after {
+    display: none;
+}
+
+#admin-cog-action, #admin-cog-action.sorting_asc, #admin-cog-action.sorting_desc, #admin-cog-action.sorting {
+    color: #1a1a1a;
+    text-align: center;
+    padding-right: 8px;
+}
+
+.dataTable-admin img {
+    max-width: 180px;
+}
+
+.avatar-wrap input[type=file] {
+    padding: 10px;
+    background: transparent;
+}
+
+.avatar-wrap img {
+    border-radius: 50%;
+    height: 220px;
+    width: 220px;
+    border: 2px solid #2ECC71;
+    padding: 2px;
+}
+
+.edit-user .switch-track .switch {
+    margin: 0 10px;
+}
+
+.edit-user .switch-track {
+    background-color: #031b21;
+}
+
+.edit-user .switch-thumb {
+    border-color: #031b21;
+}
+
+.admin-add-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+.table-bordered.dataTable .sorting::after, .table-bordered.dataTable .sorting_asc::after, .table-bordered.dataTable .sorting_desc::after {
+    bottom: 13px;
+}
+
+.dataTable-admin .td-staus {
+    color: transparent;
+}
+
+.member-cog .fa {
+    font-size: 1.5em;
+}
+
+.menu-list #demo-datatables-2 tr > th:first-child {
+    width: 60px;
+}
+
+.img-product {
+    max-width: 280px;
+}
+
+.login-brand {
+    width: 100%;
+    text-align: center;
+}
+
+.img-responsive {
+    margin: auto;
+}
+
+.bill-status {
+    padding: 5px;
+    margin: 0;
+    background: yellow;
+    margin-left: -4px;
+    /* margin-right: 0; */
+}
+
+.bill-status.active {
+    color: red;
+    background: #2ECC71;
+    font-weight: bold;
+}
+/*============Edit menu Item=============*/
+.item-photo-wrap .item-preview{
+    width: 100%;
+    max-height: 200px;
+}
+/*============END Edit menu Item=============*/
