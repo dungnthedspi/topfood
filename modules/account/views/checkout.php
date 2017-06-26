@@ -121,9 +121,6 @@ $login_data = $this->session->userdata("LogInData");
     <div class="form-actions text-center hidden-print">
       <input type="submit" name="submit" class="btn btn-success" value="Hoàn tất"/>
       <input type="button" name="back" class="btn btn-danger" value="Quay lại" onclick="goBack();"/>
-      <button type="button" class="btn btn-success right" id="map-print">
-        <span class="glyphicon glyphicon-print"></span> In hóa đơn
-      </button>
     </div>
 
   </form>
@@ -241,6 +238,7 @@ $login_data = $this->session->userdata("LogInData");
   }
 
   function computeTotalDistance(result) {
+    //get direction info
     var total = 0;
     var myroute = result.routes[0];
     for (var i = 0; i < myroute.legs.length; i++) {

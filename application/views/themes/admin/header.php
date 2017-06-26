@@ -47,6 +47,7 @@ $log_in_data = $this->session->userdata("LogInData");
               </span>
                 </button>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="<?php echo site_url() ?>">Trang chủ</a></li>
                     <li class="visible-xs-block">
                         <h4 class="navbar-text text-center">Xin chào, <?php echo $log_in_data->first_name ?>!</h4>
                     </li>

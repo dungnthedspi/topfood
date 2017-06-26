@@ -34,9 +34,15 @@ class Admin_Model extends CI_Model {
 		return $query->result();
 	}
 
+	public function getAreas($area_id) {
+		$sql = "SELECT * FROM `area` WHERE status = 1 AND area_id != '$area_id' ";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
 	public function getUserById($id) {
 		$sql = "SELECT `user`.*, 
-                acc.account_name, area.name, acc.account_id, acc.open_time, acc.close_time, acc.location, acc.shipping_fee,
+                acc.account_name, acc.area_id, area.name, acc.account_id, cus.customer_id, acc.open_time, acc.close_time, acc.location, acc.shipping_fee,
                 cus.gender 
                 FROM `user` 
                 LEFT JOIN account acc ON `user`.id=acc.user_id
@@ -73,6 +79,10 @@ class Admin_Model extends CI_Model {
 		if (isset($params['location'])) {
 			$accountData['location'] = $params['location'];
 			unset($params['location']);
+		}
+		if (isset($params['area_id'])) {
+			$accountData['area_id'] = $params['area_id'];
+			unset($params['area_id']);
 		}
 		$customerData = array();
 		if (isset($params['gender'])) {

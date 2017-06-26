@@ -147,12 +147,21 @@ $login_data = $this->session->userdata("LogInData");
                                          value="<?php echo $member->shipping_fee ?>">
                               </div>
                               <div class="form-group">
-                                  <label for="location" class="control-label">Vị trí chính xác(Sử dụng cho Google
+                                  <label for="location" hidden="" class="control-label">Vị trí chính xác(Sử dụng cho Google
                                       Map) </label>
-                                  <input id="location" class="form-control" type="text" name="location" required
+                                  <input id="location" class="form-control" type="hidden" name="location" required
                                          value="<?php echo $member->location ?>">
                               </div>
-                              <h5>Giờ làm việc</h5>
+                              <div class="form-group">
+                                  <label for="area" class="control-label">Khu vực</label>
+                                  <select id="area" class="custom-select" name="area_id">
+                                  <option value="<?php echo $member->area_id ?>"><?php echo $member->name ?></option>
+                                  <?php foreach ($areas as $area) { ?>
+                                    <option value="<?php echo $area->area_id ?>"><?php echo $area->name ?></option>
+                                  <?php } ?>  
+                                  </select>
+                              </div>
+                              <h5><b>Giờ làm việc</b></h5>
                               <p class="small text-muted">Chọn khoảng thời gian làm việc</p>
                               <div id="timerangepicker" class="row gutter-xs">
                                   <div class="col-xs-6">

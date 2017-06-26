@@ -34,6 +34,34 @@ class Home_Model extends CI_Model {
 		}
 	}
 
+	public function getlocationRestaurants() {
+		$this->db->select('acc.location, acc.account_name, us.avatar');
+		$this->db->from('account acc');
+		$this->db->join('user us', 'us.id=acc.user_id', 'left');
+
+		$this->db->where(array('us.status' => '1', "role" => 2));
+		$this->db->group_by('acc.account_id', 'DESC');
+		$query = $this->db->get();
+		if ($query->num_rows() != 0) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
+	public function getCustomers() {
+		$this->db->select('us.address');
+		$this->db->from('user us');
+
+		$this->db->where(array('us.status' => '1', "role" => 3));
+		$query = $this->db->get();
+		if ($query->num_rows() != 0) {
+			return $query->result();
+		} else {
+			return false;
+		}
+	}
+
 	public function getAreas() {
 		$sql = "SELECT * FROM area where status = 1";
 		$query = $this->db->query($sql);

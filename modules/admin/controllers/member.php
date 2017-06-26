@@ -29,8 +29,9 @@ class Member extends Admin_Controller {
 			show_404();
 		}
 		$data['member'] = $data['member'][0];
+		$area_id = $data['member']->area_id;
+		$data['areas'] = $this->model->getAreas($area_id);
 		$data['header_title'] = 'Cập nhật thông tin thành viên';
-//        debug($data);
 		$this->output->append_title($data['member']->first_name . " " . $data['member']->last_name);
 
 		$this->load->view("members/edit", $data);
@@ -41,7 +42,6 @@ class Member extends Admin_Controller {
 			show_404();
 		}
 		$post = $this->input->post();
-//        debug($post);
 		$serror = '';
 		if ($post && intval($id) >= 0) {
 
@@ -115,6 +115,15 @@ class Member extends Admin_Controller {
 				if (!isset($post['status'])) {
 					$post['status'] = -1;
 				}
+
+				$this->load->library('googlemaps');
+				$this->load->helper('text');
+				$location = convert_accented_characters($post['address']);
+				$marker = array();
+				$marker['position'] = $location;
+				$this->googlemaps->add_marker($marker);
+				$data['map'] = $this->googlemaps->create_map();
+				$post['location'] = $data['map']['markers']['marker_0']['latitude'].', '.$data['map']['markers']['marker_0']['longitude'];
 
 				$do_update_member = $this->model->updateUserById($id, $post);
 				if ($do_update_member) {

@@ -85,11 +85,6 @@
                                   <p class="form-control"><?php echo $member->shipping_fee ?></p>
                               </div>
                               <div class="form-group">
-                                  <label for="location" class="control-label">Vị trí chính xác(Sử dụng cho Google
-                                      Map) </label>
-                                  <p class="form-control"><?php echo $member->location ?></p>
-                              </div>
-                              <div class="form-group">
                                   <label for="location" class="control-label">Giờ làm việc </label>
 
                                   <div id="timerangepicker" class="row gutter-xs">
@@ -112,6 +107,7 @@
 									<?php endif; ?>
                     <br>
                     <!--                    --><?php //if($member->role == 3 ):?>
+                    <?php if($member->role != 2): ?>
                     <fieldset>
                         <legend>Thông tin tài khoản khách hàng:</legend>
                         <div class="row gutter-xs">
@@ -132,6 +128,7 @@
                             </div>
                         </div>
                     </fieldset>
+                  <?php endif; ?>
                 </div>
             </div>
             <div class="col-md-10 col-md-offset-1 col-xs-12 form-group form-actions">

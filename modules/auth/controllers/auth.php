@@ -43,8 +43,8 @@ class Auth extends Blank_Controller {
 				if ($member->status == 1) {
 					$logInData = $this->model->getUserInfo($member->id);
 					$this->session->set_userdata("LogInData", $logInData);
-					if ($member->role > 1) {
-						redirect("admin/member/detail/" . $member->id);
+					if ($member->role > 2) {
+						redirect("home");
 					}
 					redirect("admin");
 				} else {

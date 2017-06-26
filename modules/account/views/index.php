@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<head><?php echo $map['js']; ?></head>
 <article>
 	<?php if ($this->session->flashdata('smsg') != '') : ?>
     <div class="alert alert-success alert-dismissable fade in">
@@ -124,6 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
 		<?php endif; ?>
   </section>
+
 
   <section id="articles" style="display: none">
     <?php if($this->session->userdata("LogInData")):?>

@@ -21,6 +21,21 @@ class Account extends MY_Controller {
 		}
 //        $this->session->set_userdata("cart",null);
 		$account = $this->model->getAccountProfile($id);
+		// debug($account);
+
+		$this->load->library('googlemaps');
+
+		// debug($restaurants[0]);
+
+		$config['center'] = $account[0]->location;
+		$config['zoom'] = '18';
+		$config['map_width'] = '50%';
+		$this->googlemaps->initialize($config);
+
+		$marker = array();
+		$marker['position'] = $account[0]->location;
+		$this->googlemaps->add_marker($marker);
+
 //        debug($this->db->last_query());
 		if (!$account) {
 			show_404();
@@ -32,6 +47,7 @@ class Account extends MY_Controller {
 			'account' => $account[0],
 			'menus' => $account_menus,
 			'articles' => $account_articles,
+			'map' => $this->googlemaps->create_map(),
 		);
 		$this->load->js("assets/themes/default/js/star_rate.js");
 		$this->load->view("index", $data);
@@ -158,7 +174,7 @@ class Account extends MY_Controller {
 	}
 
 	function finish_cart() {
-//        debug($this->input->post());
+       // debug($this->input->post());
 		$post = $this->input->post();
 		if (!isset($post['submit'])) {
 			redirect($_SERVER['HTTP_REFERER']);
@@ -189,6 +205,7 @@ class Account extends MY_Controller {
 			"date_close" => date("Y-m-d H:i:s", strtotime($post['order_date_time'])),
 			'bill_item' => $current_item
 		);
+		// debug($new_bill_data);
 
 		$bill_id = $this->model->insertBill($new_bill_data);
 		if ($bill_id) {

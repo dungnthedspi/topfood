@@ -34,7 +34,7 @@
 <div class="clear"></div>
 <div class="row product-wrap text-center" style="background-color: white; padding-top: 10px">
   <form data-toggle="validator" action="<?php echo site_url('/home/search/')?>">
-    <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-3">
+    <div class="col-md-2 col-sm-2 col-xs-12 col-md-offset-2">
       <div class="demo-form-wrapper">
         <div class="form-group has-feedback">
           <select name="area_id" class="form-control search-select">
@@ -53,7 +53,15 @@
       <button type="submit" value="1" class="btn btn-success form-control">Tìm nhà hàng</button>
     </div>
   </form>
+  <div class="col-md-2">
+  <form id="form" action="<?php echo site_url('/home/map2/')?>" method="post">
+    <input type="text" id="lat" value="" hidden="" name="lat">
+    <input type="text" id="lng" value="" hidden="" name="lng">
+  </form>
+  <button class="btn btn-success form-control" onclick="getLocation()">Tìm quanh đây</button>
+  </div>
 </div>
+
 <div class="row">
 	<?php foreach ($restaurants as $r) { ?>
     <div class="col-xs-12 col-md-4 product-wrap">
@@ -84,3 +92,27 @@
 	<?php } ?>
 
 </div>
+
+<script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script>
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+  console.log(position);
+  var x = position.coords.latitude;
+  var y = position.coords.longitude;
+  document.getElementById("lat").value = x;
+  document.getElementById("lng").value = y;
+  var form = document.getElementById("form");
+  form.submit();
+}
+
+</script>
